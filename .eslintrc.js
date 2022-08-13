@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
     "env": {
         "browser": true,
@@ -27,7 +28,7 @@ module.exports = {
         "react/react-in-jsx-scope": "off",
         "jsx-quotes": [1, "prefer-single"],
         "no-unused-vars": [1],
-        "@typescript-eslint/no-unused-vars": [1],
+        // "@typescript-eslint/no-unused-vars": [1],
         "react/jsx-max-props-per-line": [1, { "maximum": { "single": 3, "multi": 1 } }],
     }
 };
