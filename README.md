@@ -1,6 +1,6 @@
 # React Project
 
-First initialize server:
+First initialize json-server using:
 
 ```npm run server```
 
