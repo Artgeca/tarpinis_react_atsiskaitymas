@@ -1,19 +1,56 @@
 {
-  "posts": [
+  "tickets": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "typeId": 1,
+      "price": 10.99,
+      "from": "Kaunas",
+      "to": "Vilnius"
+    },
+    {
+      "id": 2,
+      "typeId": 2,
+      "price": 13.99,
+      "from": "Kaunas",
+      "to": "Klaipėda"
+    },
+    {
+      "id": 3,
+      "typeId": 3,
+      "price": 45.00,
+      "from": "Kaunas",
+      "to": "Nida"
+    },
+    {
+      "id": 4,
+      "typeId": 3,
+      "price": 50.99,
+      "from": "Vilnius",
+      "to": "Palanga"
+    },
+    {
+      "id": 5,
+      "typeId": 1,
+      "price": 18.99,
+      "from": "Klaipėda",
+      "to": "Vilnius"
     }
   ],
-  "comments": [
+  "types": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "title": "bus",
+      "img": "https://www.sustainable-bus.com/wp-content/uploads/2019/12/scania-bus4.jpg"
+    },
+    {
+      "id": 2,
+      "title": "train",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/4/44/Train_Kaunas-Vilna_in_Kaunas_Skoda.jpg"
+    },
+    {
+      "id": 3,
+      "title": "plain",
+      "img": "https://pbs.twimg.com/media/EECH7MtWsAAnznl.jpg"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
