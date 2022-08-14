@@ -31,5 +31,6 @@ module.exports = {
     'no-unused-vars': [1],
     'react/jsx-max-props-per-line': [1, { maximum: { single: 3, multi: 1 } }],
     'import/no-named-as-default-member': [0],
+    'react/jsx-props-no-spreading': [0],
   },
 };

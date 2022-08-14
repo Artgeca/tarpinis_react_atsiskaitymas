@@ -39,17 +39,17 @@
   "types": [
     {
       "id": 1,
-      "title": "bus",
+      "title": "Bus",
       "img": "https://www.sustainable-bus.com/wp-content/uploads/2019/12/scania-bus4.jpg"
     },
     {
       "id": 2,
-      "title": "train",
+      "title": "Train",
       "img": "https://upload.wikimedia.org/wikipedia/commons/4/44/Train_Kaunas-Vilna_in_Kaunas_Skoda.jpg"
     },
     {
       "id": 3,
-      "title": "plain",
+      "title": "Plain",
       "img": "https://pbs.twimg.com/media/EECH7MtWsAAnznl.jpg"
     }
   ]

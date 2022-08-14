@@ -28,7 +28,18 @@ const App = () => {
       }}
     >
       <Typography variant='h4' p={1} gutterBottom>Tickets</Typography>
-      <TicketCard />
+      <Box
+        display='flex'
+        justifyContent='center'
+        gap={2}
+        flexWrap='wrap'
+      >
+        {
+        tickets.map((ticket) => (
+          <TicketCard key={ticket.id} {...ticket} />
+        ))
+        }
+      </Box>
       <Button
         variant='contained'
         sx={{

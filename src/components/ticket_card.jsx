@@ -4,7 +4,9 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-const TicketCard = () => (
+const TicketCard = ({
+  id, from, to, price, type,
+}) => (
   <Paper sx={{
     p: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
   }}
@@ -17,10 +19,26 @@ const TicketCard = () => (
         flexDirection='column'
         gap={1}
       >
-        <Typography variant='h6'>Bus Ticket</Typography>
-        <Typography>From: Kaunas</Typography>
-        <Typography>To: Vilnius</Typography>
-        <Typography>Price: 10.99€</Typography>
+        <Typography variant='h6'>
+          {type.title}
+          {' '}
+          Ticket
+        </Typography>
+        <Typography>
+          {from}
+          : Kaunas
+        </Typography>
+        <Typography>
+          {to}
+          : Vilnius
+        </Typography>
+        <Typography>
+          Price
+          :
+          {' '}
+          {price}
+          €
+        </Typography>
       </Grid>
       <Grid
         xs={6}
@@ -40,9 +58,12 @@ const TicketCard = () => (
     </Grid>
     <Box
       component='img'
-      src='https://www.sustainable-bus.com/wp-content/uploads/2019/12/scania-bus4.jpg'
+      src={type.img}
       height={200}
-      pt={0}
+      width={300}
+      sx={{
+        objectFit: 'cover',
+      }}
     />
   </Paper>
 );
