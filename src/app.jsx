@@ -12,6 +12,11 @@ const App = () => {
     setTickets(ticketsData);
   };
 
+  const deleteTicket = async (id) => {
+    await TicketsService.deleteById(id);
+    await fetchAllTickets();
+  };
+
   useEffect(() => {
     fetchAllTickets();
   }, []);
@@ -36,7 +41,7 @@ const App = () => {
       >
         {
         tickets.map((ticket) => (
-          <TicketCard key={ticket.id} {...ticket} />
+          <TicketCard key={ticket.id} {...ticket} onDelete={deleteTicket} />
         ))
         }
       </Box>

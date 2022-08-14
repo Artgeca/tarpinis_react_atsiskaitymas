@@ -7,6 +7,19 @@ export const fetchAll = async () => {
   return tickets;
 };
 
-const TicketsService = { fetchAll };
+export const fetchById = async (id) => {
+  const response = await fetch(`${serverAddress}/tickets/${id}?_expand=type`);
+  const ticket = await response.json();
+
+  return ticket;
+};
+
+export const deleteById = async (id) => {
+  await fetch(`${serverAddress}/tickets/${id}`, {
+    method: 'DELETE',
+  });
+};
+
+const TicketsService = { fetchAll, fetchById, deleteById };
 
 export default TicketsService;
