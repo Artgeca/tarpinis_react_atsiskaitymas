@@ -5,10 +5,10 @@ import {
 import React from 'react';
 
 const TicketForm = ({
-  open, onClose, onChange, handleClick, types, values,
+  open, onClose, onChange, handleClick, clickProps, types, values, formTitle, buttonText,
 }) => (
   <Dialog open={open} onClose={onClose}>
-    <DialogTitle>Add New Ticket</DialogTitle>
+    <DialogTitle>{formTitle}</DialogTitle>
     <DialogContent sx={{
       display: 'flex', flexDirection: 'column', gap: 2, width: 400,
     }}
@@ -55,7 +55,7 @@ const TicketForm = ({
       />
     </DialogContent>
     <DialogActions sx={{ px: 3, pt: 0, pb: 2 }}>
-      <Button variant='contained' fullWidth onClick={() => handleClick(values)}>Add</Button>
+      <Button variant='contained' fullWidth onClick={() => handleClick(...clickProps)}>{buttonText}</Button>
     </DialogActions>
   </Dialog>
 );

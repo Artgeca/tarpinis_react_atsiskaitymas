@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 const TicketCard = ({
-  id, from, to, price, type, onDelete,
+  id, from, to, price, type, onDelete, onEdit,
 }) => (
   <Paper sx={{
     p: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
@@ -50,7 +50,7 @@ const TicketCard = ({
         alignItems='center'
         gap={1}
       >
-        <IconButton color='warning' sx={{ border: 1 }}>
+        <IconButton color='warning' sx={{ border: 1 }} onClick={() => onEdit(id)}>
           <EditIcon />
         </IconButton>
         <IconButton color='error' sx={{ border: 1 }} onClick={() => onDelete(id)}>

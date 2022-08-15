@@ -20,6 +20,20 @@ const App = () => {
   const [openFormModal, setOpenFormModal] = useState(false);
   const [formValues, setFormValues] = useState(defaultFormValues);
   const [ticketBeingEdited, setTicketBeingEdited] = useState(null);
+  const [ticketId, setTicketId] = useState(null);
+
+  const formatValues = ({
+    id, typeId, from, to, price,
+  }) => ({
+    id, typeId, from, to, price,
+  });
+
+  const closeModal = () => {
+    setFormValues(defaultFormValues);
+    setOpenFormModal(false);
+    setTicketBeingEdited(null);
+    setTicketId(null);
+  };
 
   const fetchAllTickets = async () => {
     const ticketsData = await TicketsService.fetchAll();
@@ -31,6 +45,22 @@ const App = () => {
     setTicketTypes(types);
   };
 
+  const editTicket = async (ticket, id) => {
+    await TicketsService.updateTicket(ticket, id);
+    await fetchAllTickets();
+    closeModal();
+  };
+
+  const handleEditClick = (id) => {
+    const ticket = tickets.find((t) => t.id === id);
+    if (ticket) {
+      setFormValues(ticket);
+      setTicketBeingEdited(true);
+      setTicketId(id);
+      setOpenFormModal(true);
+    }
+  };
+
   const deleteTicket = async (id) => {
     await TicketsService.deleteById(id);
     await fetchAllTickets();
@@ -40,16 +70,10 @@ const App = () => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
-  const closeModal = () => {
-    setFormValues(defaultFormValues);
-    setOpenFormModal(false);
-  };
-
-  const addTicket = async (ticketProps) => {
-    const ticket = await TicketsService.createTicket(ticketProps);
+  const addTicket = async (ticket) => {
+    await TicketsService.createTicket(ticket);
     await fetchAllTickets();
     closeModal();
-    console.log(ticket);
   };
 
   useEffect(() => {
@@ -80,7 +104,12 @@ const App = () => {
         >
           {
         tickets.map((ticket) => (
-          <TicketCard key={ticket.id} {...ticket} onDelete={deleteTicket} />
+          <TicketCard
+            key={ticket.id}
+            {...ticket}
+            onDelete={deleteTicket}
+            onEdit={handleEditClick}
+          />
         ))
         }
         </Box>
@@ -96,11 +125,15 @@ const App = () => {
       </Box>
       <TicketForm
         open={openFormModal}
-        onClose={() => setOpenFormModal(false)}
+        onClose={closeModal}
         onChange={handleChange}
         types={ticketTypes}
         values={formValues}
-        handleClick={addTicket}
+        handleClick={ticketBeingEdited ? editTicket : addTicket}
+        clickProps={ticketBeingEdited
+          ? [formatValues(formValues), ticketId] : [formatValues(formValues)]}
+        formTitle={ticketBeingEdited ? 'Edit Ticket' : 'Add Ticket'}
+        buttonText={ticketBeingEdited ? 'Edit' : 'Add'}
       />
     </Box>
   );

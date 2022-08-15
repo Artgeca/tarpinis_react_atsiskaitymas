@@ -26,9 +26,9 @@ export const createTicket = async (ticket) => {
   return response.json();
 };
 
-export const updateTicket = async (ticket) => {
-  const response = await fetch(`${serverAddress}/tickets`, {
-    method: 'PUT',
+export const updateTicket = async (ticket, id) => {
+  const response = await fetch(`${serverAddress}/tickets/${id}`, {
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
