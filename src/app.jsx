@@ -25,7 +25,7 @@ const App = () => {
   const formatValues = ({
     id, typeId, from, to, price,
   }) => ({
-    id, typeId, from, to, price,
+    id, typeId, from, to, price: Number(price),
   });
 
   const closeModal = () => {
