@@ -1,5 +1,5 @@
 import {
-  Box, Grid, IconButton, Paper, Typography,
+  Box, Grid, IconButton, Paper, Tooltip, Typography,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -50,12 +50,16 @@ const TicketCard = ({
         alignItems='center'
         gap={1}
       >
-        <IconButton color='warning' sx={{ border: 1 }} onClick={() => onEdit(id)}>
-          <EditIcon />
-        </IconButton>
-        <IconButton color='error' sx={{ border: 1 }} onClick={() => onDelete(id)}>
-          <DeleteIcon />
-        </IconButton>
+        <Tooltip title='Edit'>
+          <IconButton color='warning' sx={{ border: 1 }} onClick={() => onEdit(id)}>
+            <EditIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title='Delete'>
+          <IconButton color='error' sx={{ border: 1 }} onClick={() => onDelete(id)}>
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
       </Grid>
     </Grid>
     <Box

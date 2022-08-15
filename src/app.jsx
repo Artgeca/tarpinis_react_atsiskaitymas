@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
-  Box, Fab, Typography,
+  Box, Fab, Tooltip, Typography,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import TicketsService from './services/tickets-service';
@@ -113,15 +113,17 @@ const App = () => {
         ))
         }
         </Box>
-        <Fab
-          color='primary'
-          sx={{
-            position: 'absolute', bottom: 40, right: 40,
-          }}
-          onClick={() => setOpenFormModal(true)}
-        >
-          <AddIcon />
-        </Fab>
+        <Tooltip title='Add'>
+          <Fab
+            color='primary'
+            sx={{
+              position: 'absolute', bottom: 40, right: 40,
+            }}
+            onClick={() => setOpenFormModal(true)}
+          >
+            <AddIcon />
+          </Fab>
+        </Tooltip>
       </Box>
       <TicketForm
         open={openFormModal}
