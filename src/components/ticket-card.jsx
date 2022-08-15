@@ -25,12 +25,14 @@ const TicketCard = ({
           Ticket
         </Typography>
         <Typography>
+          From:
+          {' '}
           {from}
-          : Kaunas
         </Typography>
         <Typography>
+          To:
+          {' '}
           {to}
-          : Vilnius
         </Typography>
         <Typography>
           Price

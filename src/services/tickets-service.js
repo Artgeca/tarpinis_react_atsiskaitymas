@@ -14,12 +14,45 @@ export const fetchById = async (id) => {
   return ticket;
 };
 
+export const createTicket = async (ticket) => {
+  const response = await fetch(`${serverAddress}/tickets`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(ticket),
+  });
+
+  return response.json();
+};
+
+export const updateTicket = async (ticket) => {
+  const response = await fetch(`${serverAddress}/tickets`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(ticket),
+  });
+
+  return response.json();
+};
+
 export const deleteById = async (id) => {
   await fetch(`${serverAddress}/tickets/${id}`, {
     method: 'DELETE',
   });
 };
 
-const TicketsService = { fetchAll, fetchById, deleteById };
+export const fetchAllTicketTypes = async () => {
+  const response = await fetch(`${serverAddress}/types`);
+  const types = await response.json();
+
+  return types;
+};
+
+const TicketsService = {
+  fetchAll, fetchById, createTicket, updateTicket, deleteById, fetchAllTicketTypes,
+};
 
 export default TicketsService;
